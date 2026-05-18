@@ -1,0 +1,394 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat May 16 14:13:00 2026
+# Process ID         : 13840
+# Current directory  : D:/Semester 6/DA1/DMAc/DMAc.runs/synth_1
+# Command line       : vivado.exe -log dma_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dma_top.tcl
+# Log file           : D:/Semester 6/DA1/DMAc/DMAc.runs/synth_1/dma_top.vds
+# Journal file       : D:/Semester 6/DA1/DMAc/DMAc.runs/synth_1\vivado.jou
+# Running On         : NhatHuy
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i9-13900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 31890 MB
+# Swap memory        : 13421 MB
+# Total Virtual      : 45312 MB
+# Available Virtual  : 29712 MB
+#-----------------------------------------------------------
+source dma_top.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental {D:/Semester 6/DA1/DMAc/DMAc.srcs/utils_1/imports/synth_1/dma_top.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/Semester 6/DA1/DMAc/DMAc.srcs/utils_1/imports/synth_1/dma_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top dma_top -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7640
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1149.195 ; gain = 529.730
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'dma_top' [D:/Semester 6/DA1/module/dma_top.v:16]
+INFO: [Synth 8-6157] synthesizing module 'dma_fifo' [D:/Semester 6/DA1/module/dma_fifo.v:22]
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'dma_fifo' (0#1) [D:/Semester 6/DA1/module/dma_fifo.v:22]
+INFO: [Synth 8-6157] synthesizing module 'dma_channel' [D:/Semester 6/DA1/module/dma_channel.v:20]
+	Parameter TIMEOUT_CNT bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'dma_channel' (0#1) [D:/Semester 6/DA1/module/dma_channel.v:20]
+INFO: [Synth 8-6157] synthesizing module 'crc8_inline' [D:/Semester 6/DA1/module/crc8_inline.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'crc8_inline' (0#1) [D:/Semester 6/DA1/module/crc8_inline.v:24]
+INFO: [Synth 8-226] default block is never used [D:/Semester 6/DA1/module/dma_top.v:81]
+INFO: [Synth 8-6157] synthesizing module 'dma_arbiter' [D:/Semester 6/DA1/module/dma_arbiter.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'dma_arbiter' (0#1) [D:/Semester 6/DA1/module/dma_arbiter.v:18]
+INFO: [Synth 8-6157] synthesizing module 'irq_controller' [D:/Semester 6/DA1/module/irq_controller.v:19]
+INFO: [Synth 8-6155] done synthesizing module 'irq_controller' (0#1) [D:/Semester 6/DA1/module/irq_controller.v:19]
+INFO: [Synth 8-6155] done synthesizing module 'dma_top' (0#1) [D:/Semester 6/DA1/module/dma_top.v:16]
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [D:/Semester 6/DA1/module/dma_fifo.v:64]
+WARNING: [Synth 8-6014] Unused sequential element cur_src_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:158]
+WARNING: [Synth 8-6014] Unused sequential element cur_mode_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:161]
+WARNING: [Synth 8-6014] Unused sequential element mem_wr_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:149]
+WARNING: [Synth 8-6014] Unused sequential element io_rd_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:150]
+WARNING: [Synth 8-6014] Unused sequential element crc_en_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:153]
+WARNING: [Synth 8-6014] Unused sequential element crc_check_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:154]
+WARNING: [Synth 8-6014] Unused sequential element tc_reg was removed.  [D:/Semester 6/DA1/module/dma_channel.v:156]
+WARNING: [Synth 8-3848] Net cfg_rd_data in module/entity dma_top does not have driver. [D:/Semester 6/DA1/module/dma_top.v:25]
+WARNING: [Synth 8-7129] Port src_addr[15] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[14] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[13] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[12] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[11] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[10] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[9] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[8] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[7] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[6] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[5] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[4] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[3] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[2] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mode[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mode[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[7] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[6] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[5] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[4] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[3] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[2] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[7] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[6] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[5] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[4] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[3] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[2] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[1] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[0] in module dma_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1276.184 ; gain = 656.719
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1276.184 ; gain = 656.719
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1276.184 ; gain = 656.719
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'dma_channel'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                           000001 |                           000001
+                 REQUEST |                           000010 |                           000010
+               WAIT_HLDA |                           000100 |                           000100
+                TRANSFER |                           001000 |                           001000
+                    DONE |                           010000 |                           010000
+                   ERROR |                           100000 |                           100000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'dma_channel'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1276.184 ; gain = 656.719
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 8     
+	   2 Input    8 Bit       Adders := 4     
+	   2 Input    5 Bit       Adders := 16    
+	   2 Input    4 Bit       Adders := 4     
+	   2 Input    3 Bit       Adders := 3     
++---XORs : 
+	   2 Input      8 Bit         XORs := 4     
+	   2 Input      1 Bit         XORs := 12    
+	   3 Input      1 Bit         XORs := 20    
+	   4 Input      1 Bit         XORs := 12    
++---Registers : 
+	               16 Bit    Registers := 24    
+	                8 Bit    Registers := 22    
+	                5 Bit    Registers := 8     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 36    
++---RAMs : 
+	              128 Bit	(16 X 8 bit)          RAMs := 4     
++---Muxes : 
+	   6 Input   16 Bit        Muxes := 8     
+	   2 Input   16 Bit        Muxes := 12    
+	   8 Input   16 Bit        Muxes := 12    
+	   2 Input    8 Bit        Muxes := 15    
+	   6 Input    8 Bit        Muxes := 4     
+	   6 Input    6 Bit        Muxes := 4     
+	   2 Input    6 Bit        Muxes := 8     
+	   2 Input    4 Bit        Muxes := 4     
+	   8 Input    4 Bit        Muxes := 1     
+	   5 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 25    
+	   6 Input    1 Bit        Muxes := 48    
+	   5 Input    1 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7129] Port src_addr[15] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[14] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[13] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[12] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[11] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[10] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[9] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[8] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[7] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[6] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[5] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[4] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[3] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[2] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port src_addr[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mode[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mode[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[7] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[6] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[5] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[4] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[3] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[2] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[1] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port crc_expected[0] in module dma_channel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[7] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[6] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[5] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[4] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[3] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[2] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[1] in module dma_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cfg_rd_data[0] in module dma_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1512.770 ; gain = 893.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+-----------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                  | Inference | Size (Depth x Width) | Primitives  | 
++------------+-----------------------------+-----------+----------------------+-------------+
+|dma_top     | FIFO_INST[0].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[1].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[2].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[3].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
++------------+-----------------------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1512.770 ; gain = 893.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+-----------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                  | Inference | Size (Depth x Width) | Primitives  | 
++------------+-----------------------------+-----------+----------------------+-------------+
+|dma_top     | FIFO_INST[0].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[1].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[2].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
+|dma_top     | FIFO_INST[3].u_fifo/mem_reg | Implied   | 16 x 8               | RAM32M x 2  | 
++------------+-----------------------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1512.770 ; gain = 893.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |    32|
+|3     |LUT1     |    69|
+|4     |LUT2     |    45|
+|5     |LUT3     |    28|
+|6     |LUT4     |   249|
+|7     |LUT5     |    77|
+|8     |LUT6     |   100|
+|9     |RAM32M   |     4|
+|10    |RAM32X1D |     8|
+|11    |FDRE     |   534|
+|12    |FDSE     |    36|
+|13    |IBUF     |    44|
+|14    |OBUF     |    40|
+|15    |OBUFT    |     8|
++------+---------+------+
+
+Report Instance Areas: 
++------+------------------------+---------------+------+
+|      |Instance                |Module         |Cells |
++------+------------------------+---------------+------+
+|1     |top                     |               |  1275|
+|2     |  \CH_INST[0].u_ch      |dma_channel    |   163|
+|3     |  \CH_INST[0].u_crc     |crc8_inline    |    24|
+|4     |  \CH_INST[1].u_ch      |dma_channel_0  |   163|
+|5     |  \CH_INST[1].u_crc     |crc8_inline_1  |    24|
+|6     |  \CH_INST[2].u_ch      |dma_channel_2  |   162|
+|7     |  \CH_INST[2].u_crc     |crc8_inline_3  |    24|
+|8     |  \CH_INST[3].u_ch      |dma_channel_4  |   163|
+|9     |  \CH_INST[3].u_crc     |crc8_inline_5  |    24|
+|10    |  \FIFO_INST[0].u_fifo  |dma_fifo       |    41|
+|11    |  \FIFO_INST[1].u_fifo  |dma_fifo_6     |    41|
+|12    |  \FIFO_INST[2].u_fifo  |dma_fifo_7     |    41|
+|13    |  \FIFO_INST[3].u_fifo  |dma_fifo_8     |    41|
+|14    |  u_arbiter             |dma_arbiter    |    48|
+|15    |  u_irq                 |irq_controller |    34|
++------+------------------------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 77 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+Synthesis Optimization Complete : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1729.680 ; gain = 1110.215
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1743.707 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 44 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1857.555 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 12 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
+
+Synth Design complete | Checksum: 584834a4
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 77 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1857.555 ; gain = 1246.914
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1857.555 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/Semester 6/DA1/DMAc/DMAc.runs/synth_1/dma_top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file dma_top_utilization_synth.rpt -pb dma_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat May 16 14:13:22 2026...

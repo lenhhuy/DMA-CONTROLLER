@@ -1,0 +1,7 @@
+Time resolution is 1 ps
+--- Bat dau ghi vao FIFO ---
+--- Bat dau doc tu FIFO ---
+--- Thử nghiem ghi va doc dong thoi ---
+--- Mo phong hoan thanh thanh cong ---
+$finish called at time : 456 ns : File "D:/Semester 6/DA1/testbech/tb_dma_fifo.v" Line 133
+The simulator has terminated in an unexpected manner with exit code 1.  Please review the simulation log (xsim.log) for details.

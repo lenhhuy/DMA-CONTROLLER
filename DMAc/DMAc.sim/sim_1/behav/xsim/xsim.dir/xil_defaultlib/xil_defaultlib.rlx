@@ -1,0 +1,13 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+D:/Semester 6/DA1/DMAc/DMAc.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+D:/Semester 6/DA1/module/dma_arbiter.v,1778909783,verilog,,D:/Semester 6/DA1/testbech/tb_dma_arbiter.v,,dma_arbiter,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/module/dma_channel.v,1778909778,verilog,,D:/Semester 6/DA1/module/dma_fifo.v,,dma_channel,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/module/dma_fifo.v,1778909785,verilog,,D:/Semester 6/DA1/testbech/tb_dma_fifo.v,,dma_fifo,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/module/dma_top.v,1778915450,verilog,,,,dma_top,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/module/irq_controller.v,1778909787,verilog,,D:/Semester 6/DA1/module/dma_top.v,,irq_controller,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/testbech/crc8_inline.v,1778886102,verilog,,D:/Semester 6/DA1/module/dma_arbiter.v,,crc8_inline,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/testbech/tb_dma_arbiter.v,1778917337,verilog,,,,tb_dma_arbiter,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/Semester 6/DA1/testbech/tb_dma_fifo.v,1778921286,verilog,,,,tb_dma_fifo,,,C:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
