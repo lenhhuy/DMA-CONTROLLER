@@ -5,17 +5,11 @@
 //
 // Hierarchy
 //   dma_top
-//   ├── dma_channel  x4  (CH0–CH3)
+//   ├── dma_channel  x4  (CH0-CH3)
 //   ├── dma_fifo     x4  (FIFO sau mỗi ngoại vi)
 //   ├── dma_arbiter  x1  (Fixed Priority / Round Robin)
 //   ├── irq_controller x1
 //   └── crc8_inline  x4  (kiểm tra CRC mỗi kênh)
-//
-// CPU Interface
-//   - Cấu hình kênh: cfg_ch_sel, cfg_wr_en, cfg_addr, cfg_wr_data
-//   - Đọc status:    cfg_rd_data
-//   - IRQ registers: irq_reg_addr, irq_reg_wr_en, irq_reg_wr_data, irq_reg_rd_data
-//   - irq_out → CPU INT line
 // =============================================================================
 
 `timescale 1ns / 1ps
@@ -25,14 +19,9 @@ module dma_top (
     input  wire        rst_n,
 
     // ── Cấu hình CPU → Kênh DMA ──────────────────────────────────────────────
-    input  wire [1:0]  cfg_ch_sel,      // Chọn kênh 0–3
+    input  wire [1:0]  cfg_ch_sel,      // Chọn kênh 0-3
     input  wire        cfg_wr_en,       // Ghi cấu hình
-    input  wire [2:0]  cfg_addr,        // Thanh ghi cấu hình:
-                                        //   0=src_addr_lo, 1=src_addr_hi
-                                        //   2=dst_addr_lo, 3=dst_addr_hi
-                                        //   4=byte_cnt_lo, 5=byte_cnt_hi
-                                        //   6=ctrl (bit1:0=mode, bit2=start)
-                                        //   7=crc_expected
+    input  wire [2:0]  cfg_addr,        // Thanh ghi cấu hình
     input  wire [7:0]  cfg_wr_data,
     output reg  [7:0]  cfg_rd_data,
 
@@ -51,23 +40,20 @@ module dma_top (
     input  wire        hlda,            // Hold Acknowledge từ CPU
 
     // ── Shared Data Bus (Flyby) ───────────────────────────────────────────────
-    output wire [15:0] addr_bus,        // Địa chỉ bus (MUX từ kênh được grant)
-    output wire [7:0]  data_bus,        // Dữ liệu bus
+    output wire [15:0] addr_bus,        // Địa chỉ bus 16-bit
+    output wire [7:0]  data_bus,        // Dữ liệu bus 8-bit
     output wire        mem_wr,          // Memory write strobe
     output wire        io_rd,           // I/O read strobe
 
-    // ── FIFO input (từ ngoại vi đẩy vào) ────────────────────────────────────
+    // ── FIFO input (Đã sửa thành bus chung 8-bit khớp 100% với Testbench) ───
     input  wire [3:0]  fifo_wr_en,      // Ngoại vi ghi vào FIFO kênh tương ứng
-    input  wire [7:0]  fifo_din_ch0,
-    input  wire [7:0]  fifo_din_ch1,
-    input  wire [7:0]  fifo_din_ch2,
-    input  wire [7:0]  fifo_din_ch3,
+    input  wire [7:0]  fifo_din,        // Dữ liệu bus nạp vào FIFO chung
 
     // ── Status output ─────────────────────────────────────────────────────────
     output wire [3:0]  ch_busy,         // Trạng thái busy của 4 kênh
     output wire        irq_out,         // Ngắt tổng → CPU
     output wire [3:0]  fifo_full,       // FIFO đầy (cảnh báo cho ngoại vi)
-    output wire [3:0]  fifo_empty_flag  // FIFO rỗng
+    output wire [3:0]  fifo_empty_flag  // FIFO rỗng (Sẽ được testbench bỏ trống qua port map)
 );
 
     // =========================================================================
@@ -116,15 +102,16 @@ module dma_top (
     // =========================================================================
     // 2. FIFO x4
     // =========================================================================
-    wire [7:0] fifo_dout   [0:3];
+    wire [7:0] fifo_dout    [0:3];
     wire [3:0] fifo_rd_en_w;
     wire [3:0] fifo_almost_full;
-    wire [7:0] fifo_din [0:3];
+    wire [7:0] fifo_din_split [0:3];
 
-    assign fifo_din[0] = fifo_din_ch0;
-    assign fifo_din[1] = fifo_din_ch1;
-    assign fifo_din[2] = fifo_din_ch2;
-    assign fifo_din[3] = fifo_din_ch3;
+    // Độc lập ghi từ testbench: Chia sẻ bus dữ liệu đầu vào cho cả 4 kênh FIFO
+    assign fifo_din_split[0] = fifo_din;
+    assign fifo_din_split[1] = fifo_din;
+    assign fifo_din_split[2] = fifo_din;
+    assign fifo_din_split[3] = fifo_din;
 
     genvar gi;
     generate
@@ -133,7 +120,7 @@ module dma_top (
                 .clk         (clk),
                 .rst_n       (rst_n),
                 .wr_en       (fifo_wr_en[gi]),
-                .din         (fifo_din[gi]),
+                .din         (fifo_din_split[gi]),
                 .rd_en       (fifo_rd_en_w[gi]),
                 .dout        (fifo_dout[gi]),
                 .full        (fifo_full[gi]),
@@ -227,10 +214,9 @@ module dma_top (
     // =========================================================================
     // 5. IRQ CONTROLLER
     // =========================================================================
-    // Bus Error bao gồm cả crc_error
     wire [3:0] be_combined;
     assign be_combined = ch_be | {crc_error_w[3], crc_error_w[2],
-                                   crc_error_w[1], crc_error_w[0]};
+                                  crc_error_w[1], crc_error_w[0]};
 
     irq_controller u_irq (
         .clk          (clk),
@@ -245,13 +231,10 @@ module dma_top (
     );
 
     // =========================================================================
-    // 6. BUS MUX – chọn đầu ra của kênh được grant
+    // 6. BUS MUX - chọn đầu ra của kênh được grant
     // =========================================================================
-    // HLD = OR của 4 kênh (khi bất kỳ kênh nào đang yêu cầu bus)
     assign hld = |ch_hld;
 
-    // Bus output: MUX dựa trên grant_w (one-hot)
-    // Chỉ 1 kênh được phép drive bus tại một thời điểm
     reg [15:0] mux_addr;
     reg [7:0]  mux_data;
     reg        mux_mem_wr;
